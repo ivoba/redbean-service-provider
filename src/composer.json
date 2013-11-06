@@ -1,0 +1,21 @@
+{
+    "name": "ivoba/redbean-service-provider",
+    "description": "A RedBean ORM ServiceProvider for Silex.",
+    "keywords": ["redbean", "silex"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivo Bathke",
+            "email": "ivo.bathke@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "~1.0",
+        "gabordemooij/redbean": "~3.5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ivoba\\Silex": "src"
+        }
+    }
+}
