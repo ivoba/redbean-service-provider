@@ -10,5 +10,13 @@ A [RedBean ORM](http://redbeanphp.com) ServiceProvider for [Silex](http://silex.
   ```$app->register(new Ivoba\Silex\RedBeanServiceProvider(), array('db.options' => array(
                                                                                             'dsn' => 'sqlite:/tmp/db.sqlite'
                                                                                         )));```
-- Find RedBean under ```$app['db']```
+- Init RedBean with calling ```$app['db']```.
+  This you can do in your controller or more general.
+  Then you can access your configured Facade R.
+ ```
+      use RedBean_Facade as R;
+      ...
+      $e = R::findAll('table',' ORDER BY date DESC LIMIT 2');
+ ```
+
 

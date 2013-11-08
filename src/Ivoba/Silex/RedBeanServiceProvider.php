@@ -29,13 +29,12 @@ class RedBeanServiceProvider implements ServiceProviderInterface
             if(isset($app['db.options'])){
                 $options = array_replace($options, $app['db.options']);
             }
-            return R::setup(
+            R::setup(
                 $options['dsn'],
                 $options['username'],
                 $options['password'],
                 $options['frozen']
             );
-
         });
 
     }
