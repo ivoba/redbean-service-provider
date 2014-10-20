@@ -2,6 +2,9 @@
 
 A [RedBean ORM](http://redbeanphp.com) ServiceProvider for [Silex](http://silex.sensiolabs.org).
 
+[![Build Status](http://img.shields.io/travis/ivoba/redbean-service-provider.svg)](https://travis-ci.org/ivoba/redbean-service-provider)
+
+
 ## Usage
 
 - Define a db.options array in ```$app``` with *dsn*, *user*, *password* and *frozen* entries.  
@@ -21,4 +24,5 @@ A [RedBean ORM](http://redbeanphp.com) ServiceProvider for [Silex](http://silex.
       $e = R::findAll('table',' ORDER BY date DESC LIMIT 2');
 
 
+Happy tight coupling ;)
 

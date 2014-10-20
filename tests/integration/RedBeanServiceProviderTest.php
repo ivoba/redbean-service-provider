@@ -15,8 +15,6 @@ class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
         )));
         $app['db'];//db init
         $this->assertSame('sqlite:'.__DIR__.'/test.sqlite', $app['db.options']['dsn']);
-
-        //Todo create db, check db, delete db
     }
 
     public function testDB()

@@ -10,12 +10,13 @@
         }
     ],
     "require": {
+        "php": ">=5.3.3",
         "silex/silex": "~1.0",
         "gabordemooij/redbean": "~3.5"
     },
     "autoload": {
-        "psr-0": {
-            "Ivoba\\Silex": "src"
+        "psr-4": {
+            "Ivoba\\Silex\\": "src"
         }
     }
 }
