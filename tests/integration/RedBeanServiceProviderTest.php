@@ -2,7 +2,7 @@
 namespace Ivoba\Silex;
 
 use Silex\Application;
-use RedBean_Facade as R;
+use RedBeanPHP\R;
 
 class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Application();
         $app->register(new RedBeanServiceProvider(array('db.options' => array(
-            'dsn' => 'sqlite:'.__DIR__.'/test.sqlite'
+            'dsn' => 'sqlite:'.__DIR__.'/test2.sqlite'
         ))));
         $app['db'];//db init
         $post = R::dispense('post');
@@ -31,5 +31,11 @@ class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($post->text, $fetchedPost->text);
         $this->assertTrue(file_exists(__DIR__.'/test.sqlite'));
         unlink(__DIR__.'/test.sqlite');
+    }
+
+    protected function tearDown()
+    {
+        R::close();
+        unset(R::$toolboxes['default']);
     }
 }

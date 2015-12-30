@@ -12,7 +12,7 @@
     "require": {
         "php": ">=5.3.3",
         "silex/silex": "~1.0",
-        "gabordemooij/redbean": "~3.5"
+        "gabordemooij/redbean": "~4.0"
     },
     "autoload": {
         "psr-4": {

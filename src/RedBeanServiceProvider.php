@@ -11,7 +11,7 @@ namespace Ivoba\Silex;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use RedBean_Facade as R;
+use RedBeanPHP\R;
 
 class RedBeanServiceProvider implements ServiceProviderInterface
 {
