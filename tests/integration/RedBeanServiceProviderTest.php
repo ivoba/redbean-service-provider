@@ -1,6 +1,8 @@
 <?php
-namespace Ivoba\Silex;
 
+namespace Ivoba\Silex\Tests;
+
+use Ivoba\Silex\RedBeanServiceProvider;
 use Silex\Application;
 use RedBeanPHP\R;
 
@@ -10,9 +12,14 @@ class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Application();
 
-        $app->register(new RedBeanServiceProvider(), array('db.options' => array(
-            'dsn' => 'sqlite:'.__DIR__.'/test.sqlite'
-        )));
+        $app->register(
+            new RedBeanServiceProvider(),
+            array(
+                'db.options' => array(
+                    'dsn' => 'sqlite:'.__DIR__.'/test.sqlite',
+                ),
+            )
+        );
         $app['db'];//db init
         $this->assertSame('sqlite:'.__DIR__.'/test.sqlite', $app['db.options']['dsn']);
     }
@@ -20,14 +27,19 @@ class RedBeanServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function testDB()
     {
         $app = new Application();
-        $app->register(new RedBeanServiceProvider(array('db.options' => array(
-            'dsn' => 'sqlite:'.__DIR__.'/test2.sqlite'
-        ))));
+        $app->register(
+            new RedBeanServiceProvider(),
+            array(
+                'db.options' => array(
+                    'dsn' => 'sqlite:'.__DIR__.'/test.sqlite',
+                ),
+            )
+        );
         $app['db'];//db init
         $post = R::dispense('post');
         $post->text = 'Hello World';
         $id = R::store($post);       //Create or Update
-        $fetchedPost = R::load('post',$id); //Retrieve
+        $fetchedPost = R::load('post', $id); //Retrieve
         $this->assertSame($post->text, $fetchedPost->text);
         $this->assertTrue(file_exists(__DIR__.'/test.sqlite'));
         unlink(__DIR__.'/test.sqlite');

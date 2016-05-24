@@ -9,24 +9,25 @@
 
 namespace Ivoba\Silex;
 
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Silex\Application;
-use Silex\ServiceProviderInterface;
 use RedBeanPHP\R;
 
 class RedBeanServiceProvider implements ServiceProviderInterface
 {
 
-    public function register(Application $app)
+    public function register(Container $app)
     {
 
-        $app['db'] = $app->share(function () use ($app) {
+        $app['db'] = function () use ($app) {
             $options = array(
                 'dsn'      => null,
                 'username' => null,
                 'password' => null,
                 'frozen'   => false,
             );
-            if(isset($app['db.options'])){
+            if (isset($app['db.options'])) {
                 $options = array_replace($options, $app['db.options']);
             }
             R::setup(
@@ -35,12 +36,8 @@ class RedBeanServiceProvider implements ServiceProviderInterface
                 $options['password'],
                 $options['frozen']
             );
-        });
+        };
 
-    }
-
-    public function boot(Application $app)
-    {
     }
 
 } 
