@@ -11,7 +11,6 @@ namespace Ivoba\Silex;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Silex\Application;
 use RedBeanPHP\R;
 
 class RedBeanServiceProvider implements ServiceProviderInterface
